@@ -29,5 +29,10 @@ yarn start
 ## Linting js source files
 
 ```
-yarn run lint
+yarn lint
+```
+...and fix (some of the) lint errors
+
+```
+yarn lint-fix
 ```
