@@ -12,6 +12,11 @@
 
 Reference: https://www.youtube.com/watch?v=8lGpZkjnkt4&ab_channel=Fireship
 
+## Pre-requisites
+- [Node.js 16+](https://nodejs.org/en/). Recommended to use [nvm](https://github.com/nvm-sh/nvm) 
+to get the specific Node.js version. Package managers often don't have newer versions.
+- [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
+
 ## Setting up env
 
 To use the [Telegram Bot API](https://core.telegram.org/bots/api), 
