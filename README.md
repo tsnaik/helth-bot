@@ -17,7 +17,7 @@ Reference: https://www.youtube.com/watch?v=8lGpZkjnkt4&ab_channel=Fireship
 to get the specific Node.js version. Package managers often don't have newer versions.
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
 
-## Setting up env
+## Create telegram bot for development
 
 To use the [Telegram Bot API](https://core.telegram.org/bots/api), 
 you first have to [get a bot account](https://core.telegram.org/bots) 
