@@ -1,5 +1,17 @@
 # helth-bot
 
+## Contributing to helth-bot
+
+1. Fork the Repo
+1. Clone repo in your local workspace `git clone <repo_url>`  
+1. Track origin/dev branch `git branch dev`
+1. Create new feature branch `git checkout -b new-feature-branch`
+1. Commit your change `git commit -m "message"` 
+1. Push your change `git push origin new-feature-branch`
+1. Create Pull Request using UI
+
+Reference: https://www.youtube.com/watch?v=8lGpZkjnkt4&ab_channel=Fireship
+
 ## Setting up env
 
 To use the [Telegram Bot API](https://core.telegram.org/bots/api), 
@@ -29,5 +41,10 @@ yarn start
 ## Linting js source files
 
 ```
-yarn run lint
+yarn lint
+```
+...and fix (some of the) lint errors
+
+```
+yarn lint-fix
 ```
