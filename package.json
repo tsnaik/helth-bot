@@ -2,8 +2,27 @@
   "name": "helth-bot",
   "version": "0.0.1",
   "description": "a telegram bot to boost accountability",
-  "main": "index.js",
+  "main": "src/server.js",
   "repository": "git@github.com:tsnaik/helth-bot.git",
   "author": "Tanmay Naik <13809245+tsnaik@users.noreply.github.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "telegraf": "^4.7.0"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "(eslint lib || true) && jest",
+    "lint": "eslint src/"
+  },
+  "devDependencies": {
+    "eslint": "8.11.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-plugin-prettier": "4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.5",
+    "prettier": "2.5.1"
+  }
 }
