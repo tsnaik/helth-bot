@@ -30,7 +30,10 @@ Put it in a file named `.env`:
 ```
 BOT_TOKEN=123456789:AbCdfGhIJKlmNoQQRsTUVwxyZ
 ```
-
+(optional: you can also specify a port for the server in `.env`)
+```
+PORT=5000
+```
 ## Installing required modules
 
 ```
