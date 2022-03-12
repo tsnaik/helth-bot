@@ -1,7 +1,7 @@
 {
   "name": "helth-bot",
   "version": "0.0.1",
-  "description": "a telegram bot to boost accountibility",
+  "description": "a telegram bot to boost accountability",
   "main": "index.js",
   "repository": "git@github.com:tsnaik/helth-bot.git",
   "author": "Tanmay Naik <13809245+tsnaik@users.noreply.github.com>",
