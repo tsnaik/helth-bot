@@ -16,8 +16,7 @@
     "start": "node src/server.js",
     "test": "(eslint lib || true) && jest",
     "lint": "eslint src/",
-    "lint-fix": "eslint src/ --fix",
-    "prepare": "husky install"
+    "lint-fix": "eslint src/ --fix"
   },
   "devDependencies": {
     "eslint": "8.11.0",
