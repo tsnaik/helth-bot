@@ -8,7 +8,19 @@ const app = express();
 dotenv.config();
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
-tracker(bot);
+
+let isWebhookMode = false;
+if (process.env.WEBHOOK_DOMAIN != null) {
+  console.log(
+    "webhook domain is set. probably a production env. going webhook mode"
+  );
+  isWebhookMode = true;
+  const secretPath = `/telegraf/${bot.secretPathComponent()}`;
+  bot.telegram.setWebhook(`https://${process.env.WEBHOOK_DOMAIN}${secretPath}`);
+  app.use(bot.webhookCallback(secretPath));
+}
+
+tracker(bot, isWebhookMode);
 
 app.get("/health", (req, res) => {
   // health, not helth ;)
