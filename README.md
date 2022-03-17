@@ -56,3 +56,10 @@ yarn lint
 ```
 yarn lint-fix
 ```
+
+## Production Deployment
+
+Set following variables in your production environment:
+
+1. `BOT_TOKEN`: Same as above
+1. `WEBHOOK_DOMAIN`: Domain of your web server. It be running on port 80 and support HTTPS. Example value:`mydomain.com`
