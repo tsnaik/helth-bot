@@ -1,13 +1,14 @@
 import dotenv from "dotenv";
-dotenv.config();
-
 import { Telegraf } from "telegraf";
 import express from "express";
 
 import { tracker } from "./controllers/tracker.controller.js";
 
 const app = express();
-const port = process.env.PORT || 3000;
+dotenv.config();
+
+const bot = new Telegraf(process.env.BOT_TOKEN);
+tracker(bot);
 
 app.get("/health", (req, res) => {
   // health, not helth ;)
@@ -16,12 +17,10 @@ app.get("/health", (req, res) => {
   );
 });
 
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Helth God listening on port ${port}`);
 });
-
-const bot = new Telegraf(process.env.BOT_TOKEN);
-tracker(bot);
 
 // Enable graceful stop
 process.once("SIGINT", () => {
