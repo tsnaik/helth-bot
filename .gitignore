@@ -158,3 +158,6 @@ dist
 # and uncomment the following lines
 # .pnp.*
 .DS_Store
+
+# ide related
+.vscode

@@ -44,6 +44,10 @@ dbAppUser(app);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
+  process.env.TZ = "America/Los_Angeles";
+  console.log(
+    `Server is in ${Intl.DateTimeFormat().resolvedOptions().timeZone} timezone`
+  );
   console.log(`Helth God listening on port ${port}`);
 });
 
