@@ -1,4 +1,5 @@
 import { ormdb as db } from "../models/index.js";
+import { Sequelize } from "sequelize";
 
 const attendance = db.attendances;
 const Op = db.Sequelize.Op;
@@ -41,17 +42,17 @@ export function findAll(req, res) {
     });
 }
 
-// todo: add group by operations here
 export function calculatePoints(req, res) {
   attendance
     .findAll({
-      attributes: ["user_id", "group_id", "date"],
+      group: ['group_id', 'user_id'],
+      attributes: ['user_id', [Sequelize.fn('count', Sequelize.col('user_id')), 'count']],
       where: {
         [Op.and]: [
           { group_id: req.query.groupID },
           { date: { [Op.between]: [req.query.startDate, req.query.endDate] } },
         ],
-      },
+      }
     })
     .then((data) => {
       res.send(data);
