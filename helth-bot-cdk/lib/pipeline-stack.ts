@@ -18,7 +18,7 @@ export class HelthBotPipelineStack extends Stack {
                 }
             ),
             installCommands: ["npm install -g aws-cdk"],
-            commands: ["npm ci", "npm run build", "npx cdk synth"]
+            commands: ["cd helth-bot-cdk","npm ci", "npm run build", "npx cdk synth"]
         })
     });
   }
