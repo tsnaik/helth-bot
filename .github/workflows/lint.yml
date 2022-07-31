@@ -18,5 +18,7 @@ jobs:
         with:
           node-version: "16.x"
 
-      - run: yarn install --frozen-lockfile
-      - run: yarn run lint
+      - run: |
+          cd helth-bot-app
+          yarn install --frozen-lockfile
+          yarn run lint
