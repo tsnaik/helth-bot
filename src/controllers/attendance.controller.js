@@ -46,7 +46,7 @@ export function calculatePoints(req, res) {
   attendance
     .findAll({
       group: ["group_id", "user_id"],
-      attributes: ['user_id', [Sequelize.fn("count", Sequelize.col("user_id")), "count"]],
+      attributes: ["user_id", [Sequelize.fn("count", Sequelize.col("user_id")), "count"]],
       where: {
         [Op.and]: [
           { group_id: req.query.groupID },
