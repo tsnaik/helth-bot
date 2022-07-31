@@ -1,6 +1,6 @@
 import { Duration, Stack, StackProps } from 'aws-cdk-lib';
-import { Construct } from 'constructs';
 import { Queue } from 'aws-cdk-lib/aws-sqs';
+import { Construct } from 'constructs';
 
 export class HelthBotCdkStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
