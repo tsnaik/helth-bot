@@ -1,8 +1,13 @@
 import dotenv from "dotenv";
 import { Telegraf } from "telegraf";
 import express from "express";
-
+import bodyparser from "body-parser";
+import { ormdb } from "./models/index.js";
+import { dbAppUser } from "./routes/user.routes.js";
+import { dbAppGroup } from "./routes/group.routes.js";
+import { dbAppGroupMember } from "./routes/groupMember.routes.js";
 import { tracker } from "./controllers/tracker.controller.js";
+import { dbAppAttendance } from "./routes/attendance.routes.js";
 
 const app = express();
 dotenv.config();
@@ -21,6 +26,9 @@ if (process.env.WEBHOOK_DOMAIN != null) {
 }
 
 tracker(bot, isWebhookMode);
+app.use(bodyparser.json());
+
+ormdb.sequelize.sync();
 
 app.get("/health", (req, res) => {
   // health, not helth ;)
@@ -28,6 +36,11 @@ app.get("/health", (req, res) => {
     "Yes, the bot server is running at this address! We can add more diagnostics as we go."
   );
 });
+
+dbAppAttendance(app);
+dbAppGroupMember(app);
+dbAppGroup(app);
+dbAppUser(app);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
