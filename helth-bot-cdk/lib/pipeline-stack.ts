@@ -6,8 +6,8 @@ export class HelthBotPipelineStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
-    const pipeline = new CodePipeline(this, "BlogPipeline", {
-        pipelineName: "BlogPipeline",
+    const pipeline = new CodePipeline(this, "HelthBotPipeline", {
+        pipelineName: "HelthBotPipeline",
         synth: new CodeBuildStep("SynthStep", {
             input: CodePipelineSource.connection(
                 "tsnaik/helth-bot",
