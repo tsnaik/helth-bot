@@ -1,4 +1,5 @@
 import { Stack, StackProps } from "aws-cdk-lib";
+import { BuildSpec, LinuxArmBuildImage, LinuxBuildImage } from "aws-cdk-lib/aws-codebuild";
 import { CodeBuildStep, CodePipeline, CodePipelineSource } from "aws-cdk-lib/pipelines";
 import { Construct } from "constructs";
 
@@ -9,6 +10,17 @@ export class HelthBotPipelineStack extends Stack {
     const pipeline = new CodePipeline(this, "HelthBotPipeline", {
         pipelineName: "HelthBotPipeline",
         synth: new CodeBuildStep("SynthStep", {
+            partialBuildSpec: BuildSpec.fromObject({
+              version: "0.2",
+                phases: {
+                  install: {
+                    "runtime-versions": {
+                      nodejs: "16.x"
+                    }
+                  }
+                }
+            }),
+            buildEnvironment: { buildImage: LinuxBuildImage.AMAZON_LINUX_2_4 },
             input: CodePipelineSource.connection(
                 "tsnaik/helth-bot",
                 "dev",
@@ -18,7 +30,7 @@ export class HelthBotPipelineStack extends Stack {
                 }
             ),
             installCommands: ["npm install -g aws-cdk"],
-            commands: ["npm ci", "npm run build", "npx cdk synth"]
+            commands: ["npm --version", "npm ci", "npm run build", "npx cdk synth"]
         })
     });
   }
