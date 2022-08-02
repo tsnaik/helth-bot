@@ -11,7 +11,7 @@ export class HelthBotPipelineStack extends Stack {
         synth: new CodeBuildStep("SynthStep", {
             input: CodePipelineSource.connection(
                 "tsnaik/helth-bot",
-                "main",
+                "dev",
                 {
                   connectionArn:
                       "arn:aws:codestar-connections:us-east-1:324872873278:connection/054653ee-510a-4c0c-9253-9fb17f432153"

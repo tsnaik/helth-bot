@@ -8,7 +8,6 @@
   "bin": {
     "helth-bot-cdk": "bin/helth-bot-cdk.js"
   },
-  "type": "module",
   "scripts": {
     "start": "node src/server.js",
     "test": "(eslint lib || true) && jest",
