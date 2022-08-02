@@ -158,3 +158,11 @@ dist
 # and uncomment the following lines
 # .pnp.*
 .DS_Store
+
+*.js
+!jest.config.js
+*.d.ts
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
