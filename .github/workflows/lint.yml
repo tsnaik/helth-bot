@@ -19,6 +19,5 @@ jobs:
           node-version: "16.x"
 
       - run: |
-          cd helth-bot-app
-          yarn install --frozen-lockfile
-          yarn run lint
+          npm ci
+          npm run lint
