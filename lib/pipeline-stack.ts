@@ -2,6 +2,7 @@ import { Stack, StackProps } from "aws-cdk-lib";
 import { BuildSpec, LinuxArmBuildImage, LinuxBuildImage } from "aws-cdk-lib/aws-codebuild";
 import { CodeBuildStep, CodePipeline, CodePipelineSource } from "aws-cdk-lib/pipelines";
 import { Construct } from "constructs";
+import { HelthBotLambdaDeploymentStage } from "./helth-bot-stage";
 
 export class HelthBotPipelineStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -33,5 +34,10 @@ export class HelthBotPipelineStack extends Stack {
             commands: ["npm --version", "npm ci", "npm run build", "npx cdk synth"]
         })
     });
+
+    pipeline.addStage(new HelthBotLambdaDeploymentStage(this, "test", {
+      env: { account: "324872873278", region: "us-east-1" }
+    }));
+
   }
 }
