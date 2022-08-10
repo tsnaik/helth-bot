@@ -11,8 +11,8 @@
   "scripts": {
     "start": "node src/server.js",
     "test": "(eslint lib || true) && jest",
-    "lint": "eslint src/",
-    "lint-fix": "eslint src/ --fix",
+    "lint": "eslint lambda-handlers/",
+    "lint-fix": "eslint lambda-handlers/ --fix",
     "build": "tsc",
     "watch": "tsc -w",
     "cdk": "cdk"
