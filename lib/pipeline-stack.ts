@@ -35,7 +35,7 @@ export class HelthBotPipelineStack extends Stack {
         })
     });
 
-    pipeline.addStage(new HelthBotLambdaDeploymentStage(this, "test", {
+    pipeline.addStage(new HelthBotLambdaDeploymentStage(this, "HelthBotLambdaStagd", {
       env: { account: "324872873278", region: "us-east-1" }
     }));
 
