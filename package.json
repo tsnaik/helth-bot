@@ -7,14 +7,15 @@
   "author": "Tanmay Naik <13809245+tsnaik@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
-    "chrono-node": "^2.3.8",
     "body-parser": "^1.19.2",
+    "chrono-node": "^2.3.8",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.17.0",
-    "telegraf": "^4.7.0"
+    "telegraf": "^4.7.0",
+    "xmlhttprequest": "^1.8.0"
   },
   "type": "module",
   "scripts": {
