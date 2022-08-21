@@ -38,4 +38,12 @@ db.groups.belongsToMany(db.users, {
   foreignKey: "group_id",
 });
 
+db.users.hasMany(db.attendances, {
+  foreignKey: "user_id"
+});
+db.attendances.belongsTo(db.users, {
+  foreignKey: "user_id",
+  targetKey: "user_id"
+});
+
 export const ormdb = db;

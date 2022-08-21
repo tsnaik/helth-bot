@@ -1,5 +1,4 @@
 import { ormdb as db } from "../models/index.js";
-import { Sequelize } from "sequelize";
 
 const attendance = db.attendances;
 const Op = db.Sequelize.Op;
@@ -42,30 +41,14 @@ export function findAll(req, res) {
     });
 }
 
-export function calculatePoints(req, res) {
-  attendance
-    .findAll({
-      group: ["group_id", "user_id"],
-      attributes: [
-        "user_id",
-        [Sequelize.fn("count", Sequelize.col("user_id")), "count"],
-      ],
-      where: {
-        [Op.and]: [
-          { group_id: req.query.groupID },
-          { date: { [Op.between]: [req.query.startDate, req.query.endDate] } },
-        ],
-      },
-    })
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving attendances.",
-      });
-    });
+export async function calculatePoints(req, res) {
+  let groupID = req.query.groupID;
+  let startDate = req.query.startDate;
+  let endDate = req.query.endDate;
+  const [results, metadata] = await db.sequelize
+  .query("SELECT a.user_id, u.first_name, count(a.user_id) as count FROM attendances AS a INNER JOIN users AS u ON a.user_id = u.id WHERE a.group_id=" + groupID + 
+  " AND a.date between '" + startDate + "'::DATE AND '" + endDate + "'::DATE GROUP BY a.group_id, a.user_id, u.first_name");
+  res.send(results);
 }
 
 export const attendances = attendance;

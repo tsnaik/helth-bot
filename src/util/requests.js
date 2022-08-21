@@ -1,6 +1,9 @@
 import { XMLHttpRequest } from "xmlhttprequest";
+import dotenv from "dotenv";
 
-const URL = "http://ec2-3-228-9-72.compute-1.amazonaws.com";
+dotenv.config();
+
+const URL = loadURL();
 
 const GET_METHOD = "GET";
 const POST_METHOD = "POST";
@@ -8,6 +11,16 @@ const POST_METHOD = "POST";
 const USERS_PATH = URL + "/api/users/";
 const GROUPS_PATH = URL + "/api/groups/";
 const ATTENDANCES_PATH = URL + "/api/attendances/";
+
+function loadURL() {
+  let environment = process.env.ENVIRONMENT;
+  let port = process.env.PORT;
+  if (environment == "dev") {
+    return `http://localhost:${port}`;
+  } else {
+    return "http://ec2-3-228-9-72.compute-1.amazonaws.com";
+  }
+}
 
 function request(method, url, body) {
   return new Promise(function(resolve, reject) {
@@ -57,9 +70,18 @@ export function findGroup(groupId) {
   return requestsHelper(GET_METHOD, GROUPS_PATH + groupId, {});
 }
 
+export function findAllGroups() {
+  return requestsHelper(GET_METHOD, GROUPS_PATH, {});
+}
+
 // attendances
 export function createAttendance(attendance) {
   return requestsHelper(POST_METHOD, ATTENDANCES_PATH, attendance); 
+}
+
+export function getAttendanceStat(groupId, startDate, endDate) {
+  return requestsHelper(GET_METHOD, ATTENDANCES_PATH + "stat/points?groupID=" + groupId + 
+  "&startDate=" + startDate + "&endDate=" + endDate, {});
 }
 
 // users

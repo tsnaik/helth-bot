@@ -34,6 +34,10 @@ BOT_TOKEN=123456789:AbCdfGhIJKlmNoQQRsTUVwxyZ
 ```
 PORT=5000
 ```
+(API requests are sent to dev)
+```
+ENVIRONMENT=dev
+```
 ## Installing required modules
 
 ```

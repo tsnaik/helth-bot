@@ -8,6 +8,7 @@ import { dbAppGroup } from "./routes/group.routes.js";
 import { dbAppGroupMember } from "./routes/groupMember.routes.js";
 import { tracker } from "./controllers/tracker.controller.js";
 import { dbAppAttendance } from "./routes/attendance.routes.js";
+import { appScheduler } from "./routes/scheduler.routes.js";
 
 const app = express();
 dotenv.config();
@@ -41,6 +42,7 @@ dbAppAttendance(app);
 dbAppGroupMember(app);
 dbAppGroup(app);
 dbAppUser(app);
+appScheduler(app);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
