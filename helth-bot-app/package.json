@@ -12,7 +12,7 @@
     "express": "^4.17.3",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.17.0",
+    "sequelize": "^6.29.0",
     "telegraf": "^4.7.0"
   },
   "type": "module",
